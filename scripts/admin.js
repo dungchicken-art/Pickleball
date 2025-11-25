@@ -80,23 +80,28 @@ function renderBookings(bookings) {
 }
 
 async function loadBookings() {
-  const response = await fetch(`${API_BASE}/bookings`);
-  if (!response.ok) throw new Error('Không tải được danh sách');
-  const bookings = await response.json();
-  renderBookings(bookings);
+  try {
+    const response = await fetch(`${API_BASE}/bookings`);
+    if (!response.ok) throw new Error('Không tải được danh sách');
+    const bookings = await response.json();
+    renderBookings(bookings);
+  } catch (error) {
+    bookingList.innerHTML = "<div class='alert alert-danger mb-0'>Không kết nối được backend. Hãy chạy: <code>node server.js</code></div>";
+  }
 }
 
 async function updateStatus(id, status) {
-  const response = await fetch(`${API_BASE}/bookings/${id}`, {
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ status }),
-  });
-  if (!response.ok) {
-    alert('Không cập nhật được trạng thái.');
-    return;
+  try {
+    const response = await fetch(`${API_BASE}/bookings/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status }),
+    });
+    if (!response.ok) throw new Error('Không cập nhật được trạng thái.');
+    await loadBookings();
+  } catch (error) {
+    alert('Không cập nhật được trạng thái. Hãy kiểm tra backend.');
   }
-  await loadBookings();
 }
 
 adminLoginForm.addEventListener('submit', async (event) => {

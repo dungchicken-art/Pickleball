@@ -2,6 +2,8 @@
 
 Demo full-stack nhỏ gồm giao diện người chơi, quản trị và backend Node.js tối giản để nhận/gửi trạng thái đặt sân.
 
+> Vì sao cần backend? Bản đầu tiên chỉ là static prototype để phác thảo UI và quy trình, nên không thể thật sự xác thực hay lưu đặt sân. Bản hiện tại đã bổ sung server Node để lưu file, check đăng nhập demo và gửi/nhận trạng thái qua API.
+
 ## Chạy nhanh
 1. Cài Node.js 18+. Không cần cài package ngoài.
 2. Chạy backend và phục vụ static:

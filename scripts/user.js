@@ -60,6 +60,7 @@ async function fetchLatest() {
     renderLatest(bookings[0]);
   } catch (error) {
     latestSection.classList.add('hidden');
+    showStatus('Không kết nối được backend. Hãy chạy: node server.js', 'danger');
   }
 }
 
