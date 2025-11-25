@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đặt sân Pickleball - Người chơi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-light">
+  <header class="hero position-relative overflow-hidden">
+    <div class="container py-5 position-relative">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+          <p class="eyebrow text-uppercase mb-2">Trải nghiệm cao cấp</p>
+          <h1 class="display-5 fw-bold text-white mb-3">Đặt sân Pickleball nhanh chóng</h1>
+          <p class="lead text-white-50 mb-0">Đăng nhập, chọn thời gian chơi, gửi thông tin chuyển khoản và nhận xác thực tức thì từ chủ sân.</p>
+        </div>
+        <div class="col-lg-4 d-flex justify-content-lg-end">
+          <div class="badge rounded-pill bg-white bg-opacity-25 text-white px-4 py-3 fw-semibold shadow-sm">Giao diện người chơi</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-glow"></div>
+  </header>
+
+  <main class="container position-relative" style="margin-top: -80px;">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <section class="card border-0 shadow-lg" id="login-card">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-start justify-content-between mb-3">
+              <div>
+                <p class="text-secondary mb-1 small">Đăng nhập để đặt sân</p>
+                <h2 class="h4 mb-0">Tài khoản người chơi</h2>
+              </div>
+              <span class="badge text-bg-primary rounded-pill">Demo</span>
+            </div>
+            <p class="text-muted small mb-3">Dùng thử: <strong>user@pickle.com</strong> / <strong>play123</strong></p>
+            <form id="login-form" class="vstack gap-3">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="login-email" placeholder="name@example.com" required />
+                <label for="login-email">Email</label>
+              </div>
+              <div class="form-floating">
+                <input type="password" class="form-control" id="login-password" placeholder="••••••" required />
+                <label for="login-password">Mật khẩu</label>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg w-100">Đăng nhập</button>
+            </form>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-lg-8">
+        <section class="card border-0 shadow-lg hidden" id="booking-card">
+          <div class="card-body p-4">
+            <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3 mb-3">
+              <div>
+                <p class="text-secondary mb-1 small">Thông tin đặt sân &amp; thanh toán</p>
+                <h2 class="h4 mb-0">Gửi cho chủ sân</h2>
+              </div>
+              <button id="logout" class="btn btn-outline-secondary">Đăng xuất</button>
+            </div>
+
+            <form id="booking-form" class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label" for="play-date">Ngày chơi</label>
+                <input type="date" class="form-control" id="play-date" required />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="start-time">Giờ bắt đầu</label>
+                <input type="time" class="form-control" id="start-time" required />
+              </div>
+              <div class="col-md-12 col-lg-6">
+                <label class="form-label" for="duration">Thời lượng (giờ)</label>
+                <input type="number" class="form-control" id="duration" min="1" max="6" value="2" required />
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <label class="form-label" for="player-name">Tên người đặt</label>
+                <input type="text" class="form-control" id="player-name" required />
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <label class="form-label" for="player-phone">Số điện thoại</label>
+                <input type="tel" class="form-control" id="player-phone" required />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="payment-method">Hình thức chuyển tiền</label>
+                <select id="payment-method" class="form-select" required>
+                  <option value="Chuyển khoản">Chuyển khoản</option>
+                  <option value="Ví điện tử">Ví điện tử</option>
+                  <option value="Tiền mặt">Tiền mặt tại quầy</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="payment-ref">Mã giao dịch / ghi chú</label>
+                <input type="text" class="form-control" id="payment-ref" placeholder="VD: #CK123456" required />
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-lg w-100">Gửi thông tin cho chủ sân</button>
+              </div>
+            </form>
+
+            <div id="status" class="mt-3"></div>
+
+            <hr class="my-4" />
+            <div id="latest-booking" class="hidden">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <h3 class="h5 mb-0">Giao dịch mới nhất</h3>
+                <span id="latest-status" class="badge rounded-pill"></span>
+              </div>
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <div class="bg-light rounded-3 p-3 h-100 shadow-sm">
+                    <p class="text-secondary mb-1 small">Thời gian</p>
+                    <p class="fw-semibold mb-0" id="latest-schedule"></p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="bg-light rounded-3 p-3 h-100 shadow-sm">
+                    <p class="text-secondary mb-1 small">Người đặt</p>
+                    <p class="fw-semibold mb-0" id="latest-name"></p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="bg-light rounded-3 p-3 h-100 shadow-sm">
+                    <p class="text-secondary mb-1 small">Phương thức</p>
+                    <p class="fw-semibold mb-0" id="latest-method"></p>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="bg-white rounded-3 p-3 shadow-sm border">
+                    <p class="text-secondary mb-1 small">Mã giao dịch / ghi chú</p>
+                    <p class="fw-semibold mb-0" id="latest-ref"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center text-muted py-4">
+    <p class="mb-1">Thông tin sau khi gửi sẽ hiện ở trang quản trị để xác thực thanh toán.</p>
+    <a href="./admin.html" class="fw-semibold text-decoration-none text-primary">Đăng nhập quản trị</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts/user.js"></script>
+</body>
+</html>
