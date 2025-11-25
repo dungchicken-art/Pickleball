@@ -1,0 +1,14 @@
+{
+  "name": "pickleball",
+  "version": "1.0.0",
+  "description": "Demo đặt sân pickleball với frontend Bootstrap và backend Node.js lưu file.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node -e \"require('./server').createServer().close()\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
