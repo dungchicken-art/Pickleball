@@ -1,0 +1,45 @@
+:root {
+  --gradient: linear-gradient(135deg, #0f172a, #3b82f6, #14b8a6);
+  --gradient-admin: linear-gradient(135deg, #0f172a, #0ea5e9, #22c55e);
+}
+
+* { box-sizing: border-box; }
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: #f8fafc;
+}
+
+.hero {
+  background: var(--gradient);
+  color: white;
+  position: relative;
+}
+
+.hero-admin { background: var(--gradient-admin); }
+
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1), transparent 40%),
+              radial-gradient(circle at 80% 0%, rgba(255,255,255,0.15), transparent 45%),
+              radial-gradient(circle at 50% 80%, rgba(255,255,255,0.12), transparent 45%);
+  pointer-events: none;
+}
+
+.eyebrow { letter-spacing: 0.1em; font-weight: 600; }
+
+.card { border-radius: 18px; }
+
+.hidden { display: none !important; }
+
+#status .alert { margin: 0; }
+
+.booking-card { border: 1px solid rgba(148, 163, 184, 0.35); border-radius: 14px; background: white; }
+.booking-card header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+.booking-card .badge { font-weight: 700; }
+
+.badge.pending { background: #fff4ce; color: #8a6d1c; }
+.badge.confirmed { background: #dcfce7; color: #166534; }
+.badge.rejected { background: #fee2e2; color: #991b1b; }
+
+#latest-booking .badge { font-size: 0.9rem; }
